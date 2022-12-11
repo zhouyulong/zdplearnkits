@@ -3,7 +3,7 @@
 # @Author   : Yu Loong
 # @File     : fdutils.py
 
-from typing import Dict, List, Any, Union, AnyStr, KeysView
+from typing import Dict, List, Any, Union, AnyStr, KeysView, Optional
 
 
 # c1
@@ -29,7 +29,7 @@ class Accumulator():
             raise Exception(f'{name} is  already in accumulator.keys')
         self.accumulator[name] = list()
 
-    def gets(self) -> Dict[AnyStr: Any]:
+    def gets(self) -> Dict[AnyStr, Any]:
         return self.accumulator
 
     def get_item(self, name: AnyStr) -> List[Any]:
