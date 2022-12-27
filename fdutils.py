@@ -21,6 +21,8 @@ class Accumulator():
             self.accumulator[name] = list()
 
     def __getitem__(self, item) -> List[Any]:
+        if item not in self.accumulator.keys():
+            raise Exception(f'key error, {item} is not in accumulator')
         return self.accumulator[item]
 
     def add(self, name: AnyStr, val: Any):
