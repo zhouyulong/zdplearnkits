@@ -6,6 +6,7 @@
 from typing import Dict, List, Any, Tuple, AnyStr, KeysView, Optional
 import torch
 from torch import nn
+import time
 
 
 # 1
@@ -68,3 +69,31 @@ def display_model_layers(module: nn.Module, data_size: Tuple[int, int, int, int]
     for index in range(max_length):
         print(str(index+1).center(5),accumulator['name'][index].ljust(max_length_name), '\t', accumulator['layer'][index].ljust(max_length_layer),
               '\t', f'input shape\t:{accumulator["input_shape"][index]}'.ljust(40), f'\toutput shape:\t{accumulator["output_shape"][index]}'.ljust(50))
+
+
+# 3 timekeeping
+class Timer:
+    def __init__(self) -> None:
+        self.__times = list()
+        self.start()
+
+    def start(self):
+        self.start_time = time.time()
+
+    def cut(sell) -> float:
+        """
+        return the time used for epoch
+        """
+        self.cut_time = time.time()-self.start_time()
+        self.__times.append(self.cut_time)
+        return self.cut_time
+
+    def sum(self) -> float:
+        return sum(self.__times)
+
+    def avg(self) -> float:
+        return torch.tensor(self.__times, dtype=torch.float).mean().item()
+
+    # display cumsum for times
+    def accumulate(self) -> float:
+        return torch.tensor(self.__times, dtype=torch.float).cumsum(dim-0).tolist()
