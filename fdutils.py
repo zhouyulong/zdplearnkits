@@ -80,11 +80,11 @@ class Timer:
     def start(self):
         self.start_time = time.time()
 
-    def cut(sell) -> float:
+    def cut(self) -> float:
         """
         return the time used for epoch
         """
-        self.cut_time = time.time()-self.start_time()
+        self.cut_time = time.time()-self.start_time
         self.__times.append(self.cut_time)
         return self.cut_time
 
