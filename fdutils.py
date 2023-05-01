@@ -75,6 +75,8 @@ def display_model_layers(module: nn.Module, data_size: Tuple[int, int, int, int]
 class Timer:
     def __init__(self) -> None:
         self.__times = list()
+        self.cut_time = 0.
+        self.start_time = 0.
         self.start()
 
     def start(self):
@@ -96,4 +98,4 @@ class Timer:
 
     # display cumsum for times
     def accumulate(self) -> float:
-        return torch.tensor(self.__times, dtype=torch.float).cumsum(dim-0).tolist()
+        return torch.tensor(self.__times, dtype=torch.float).cumsum(dim=0).tolist()
