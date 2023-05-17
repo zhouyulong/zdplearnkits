@@ -99,3 +99,13 @@ class Timer:
     # display cumsum for times
     def accumulate(self) -> float:
         return torch.tensor(self.__times, dtype=torch.float).cumsum(dim=0).tolist()
+
+
+# 4
+def clamp(x, min_value, max_value):
+    if x < min_value:
+        return min_value
+    elif x > max_value:
+        return max_value
+    else:
+        return x
